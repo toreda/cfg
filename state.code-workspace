@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"slither.solcPath": "",
+		"slither.hiddenDetectors": []
+	},
+	"extensions": {
+		"recommendations": [
+			"aaron-bond.better-comments",
+			"esbenp.prettier-vscode",
+			"codezombiech.gitignore",
+			"eg2.vscode-npm-script",
+			"dbaeumer.vscode-eslint",
+			"sonarsource.sonarlint-vscode",
+			"yzhang.markdown-all-in-one"
+		]
+	}
+}

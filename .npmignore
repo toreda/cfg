@@ -1,0 +1,17 @@
+.eslintrc.js
+.gitattributes
+.github
+.gitignore
+*.code-workspace
+coverage
+demo
+examples
+gulpfile.ts
+jest.config.js
+node_modules
+sonar-project.properties
+src/
+test-report.xml
+tests
+yarn-debug.log
+yarn-error.log
