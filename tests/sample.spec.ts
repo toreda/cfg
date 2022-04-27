@@ -1,5 +1,3 @@
 describe('Sample Suite', () => {
-	it(`should have a test`, () => {
-
-	});
+	it(`should have a test`, () => {});
 });
