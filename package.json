@@ -57,5 +57,8 @@
 		"store",
 		"save state",
 		"Toreda"
-	]
+	],
+	"dependencies": {
+		"@toreda/strong-types": "^0.28.5"
+	}
 }

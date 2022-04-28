@@ -880,13 +880,21 @@
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@toreda/eslint-config/-/eslint-config-2.2.0.tgz#ee3e0bb8d2263461ea214e04c728f498f2b09278"
 
-"@toreda/log@^0.6.16":
+"@toreda/log@^0.6.12", "@toreda/log@^0.6.16":
   version "0.6.16"
   resolved "https://registry.yarnpkg.com/@toreda/log/-/log-0.6.16.tgz#bdca453a08242b655804035d27cf788bcd9b91e1"
 
 "@toreda/prettier-config@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@toreda/prettier-config/-/prettier-config-1.0.1.tgz#bd6c47352aa99560617f0f4a29f16ab7c3070b86"
+
+"@toreda/strong-types@^0.28.5":
+  version "0.28.5"
+  resolved "https://registry.yarnpkg.com/@toreda/strong-types/-/strong-types-0.28.5.tgz#a62bc6f27c0f4a7835b0a50422eee3aea4956607"
+  integrity sha512-l6yUw1kaQP/lM2z8O5qr7XNDRI3ik1X874uBdKML164H42AIyyw8i69LV9ecd0xLGeMsLzzWJ4bjUDqYcQfmvQ==
+  dependencies:
+    "@toreda/log" "^0.6.12"
+    big.js "^6.1.1"
 
 "@toreda/types@^2.11.0":
   version "2.11.0"
@@ -1663,6 +1671,11 @@ base@^0.11.1:
     isobject "^3.0.1"
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
+
+big.js@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-6.1.1.tgz#63b35b19dc9775c94991ee5db7694880655d5537"
+  integrity sha512-1vObw81a8ylZO5ePrtMay0n018TcftpTA5HFKDaSuiUDBo8biRBtjIobw60OpwuvrGk+FsxKamqN4cnmj/eXdg==
 
 binary-extensions@^1.0.0:
   version "1.13.1"
