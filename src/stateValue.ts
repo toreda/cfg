@@ -1,6 +1,6 @@
 import {Text, textMake} from '@toreda/strong-types';
 
-export class Event {
+export class StateValue {
 	public readonly key: Text;
 	public readonly value: unknown;
 

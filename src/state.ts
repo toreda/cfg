@@ -1,24 +1,29 @@
-import {Event} from './event';
+import {StateValue} from './stateValue';
+import {StateData} from './options';
 
 export class State {
-	public readonly events;
+	public readonly stateValue;
+	public keys;
 
-	constructor() {
-		this.events = {};
+	constructor(options?: StateData) {
+		this.stateValue = new StateValue();
+		this.keys = {};
 	}
 
-	async save(event: Event): Promise<unknown> {
-		if (event.key && event.value) {
-			await this.events.push(event);
+	async save(stateValue: StateValue): Promise<void> {
+		const map = new Map();
+
+		if (this.stateValue.key) {
+			for (let i = 0; i < this.keys.length; i++) {
+				map.set(this.stateValue.key[i], this.stateValue.value[i]);
+			}
 		}
-		return this.events;
 	}
 
 	async retrieve(key): Promise<unknown> {
-		for (const prop in this.events) {
-			if (key === this.events[prop]) {
-				return this.events[prop].value;
-			}
+		if (key) {
+			return key.value;
 		}
+		return null;
 	}
 }
