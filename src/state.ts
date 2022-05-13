@@ -2,21 +2,17 @@ import {StateValue} from './stateValue';
 import {StateData} from './options';
 
 export class State {
-	public readonly stateValue;
-	public keys;
+	public readonly stateValue: StateValue;
 
 	constructor(options?: StateData) {
 		this.stateValue = new StateValue();
-		this.keys = {};
 	}
 
 	async save(stateValue: StateValue): Promise<void> {
 		const map = new Map();
 
 		if (this.stateValue.key) {
-			for (let i = 0; i < this.keys.length; i++) {
-				map.set(this.stateValue.key[i], this.stateValue.value[i]);
-			}
+			map.set(this.stateValue.key, this.stateValue.value);
 		}
 	}
 
