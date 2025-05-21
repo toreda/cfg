@@ -1,29 +1,39 @@
 {
-	"exclude": ["node_modules", "**/*.spec.ts", "tests", "dist/**"],
-	"include": ["./src/index.ts", "./src/**.ts", "./src/**/*.ts"],
-	"filesGlob": ["./src/**.ts", "!./node_modules/**"],
+	"exclude": ["**/node_modules", "dist/**"],
+	"include": ["**/src/**/*", "**/tests/**/*.ts"],
+	"filesGlob": ["./src/*.ts", "./src/**/*.ts", "!./node_modules/**"],
 	"compilerOptions": {
-		"baseUrl": ".",
+		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": false,
 		"alwaysStrict": true,
 		"declaration": true,
 		"esModuleInterop": true,
 		"isolatedModules": false,
-		"lib": ["es6", "ES2015", "ES2017.TypedArrays"],
-		"module": "commonjs",
+		"lib": ["es6", "ES2015", "ESNext"],
+		"module": "CommonJS",
 		"moduleResolution": "node",
 		"noImplicitUseStrict": false,
 		"outDir": "./dist",
 		"preserveConstEnums": true,
 		"removeComments": false,
-		"rootDir": "./src",
+		"incremental": true,
+		"resolveJsonModule": true,
+		"rootDir": ".",
+		"sourceMap": true,
+		"strict": true,
 		"strictBindCallApply": true,
 		"strictNullChecks": true,
 		"strictPropertyInitialization": true,
-		"target": "es2015",
+		"target": "ESNext",
 		"traceResolution": false
 	},
 	"ts-node": {
-		"swc": true
+		"swc": true,
+		"compilerOptions": {
+			"allowSyntheticDefaultImports": true,
+			"noLib": true,
+			"noEmit": true,
+			"sourceMap": false
+		}
 	}
 }

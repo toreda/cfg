@@ -1,7 +1,7 @@
 /**
  *	MIT License
  *
- *	Copyright (c) 2019 - 2022 Toreda, Inc.
+ *	Copyright (c) 2019 - 2025 Toreda, Inc.
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -23,23 +23,7 @@
  *
  */
 
-module.exports = {
-	roots: ['./'],
-	coverageDirectory: './coverage',
-	coveragePathIgnorePatterns: [
-		'tests/',
-		'node_modules/',
-		'.node/',
-		'jest/',
-		'coverage/',
-		'webpack.config.js'
-	],
-	moduleFileExtensions: ['ts', 'js', 'json'],
-	moduleNameMapper: {'^src/(.*)': '<rootDir>/src/$1'},
-	testEnvironment: 'node',
-	testPathIgnorePatterns: ['/node_modules/'],
-	testRegex: '(/__tests__/.*|(\\.|/)(spec))\\.ts$',
-	testResultsProcessor: 'jest-sonar-reporter',
-	transform: {'^.+\\.tsx?$': 'ts-jest', '^.+\\.jsx?$': 'babel-jest'},
-	transformIgnorePatterns: ['node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)']
-};
+/**
+ * @category Core
+ */
+export interface CfgData {}
