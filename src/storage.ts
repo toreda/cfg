@@ -29,5 +29,5 @@ import {type StorageInit} from './storage/init';
  * @category Storage
  */
 export class Storage {
-	constructor(init: StorageInit) {}
+	constructor(init: Partial<StorageInit>) {}
 }

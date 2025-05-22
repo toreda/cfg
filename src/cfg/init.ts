@@ -30,6 +30,6 @@ import {type CfgData} from './data';
  * @category Core
  */
 export interface CfgInit {
-	log?: Log;
-	data?: Partial<CfgData>;
+	log: Log;
+	data: Partial<CfgData>;
 }

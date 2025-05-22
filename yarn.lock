@@ -1247,6 +1247,10 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@toreda/fate/-/fate-0.7.0.tgz#47879381c56b0140e27d89bfaa7b9e69606c892d"
 
+"@toreda/lifecycle@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@toreda/lifecycle/-/lifecycle-2.2.1.tgz#3d8bd7aea4314110ad40b94b93f92bcfe7ce3646"
+
 "@toreda/log@^0.6.16":
   version "0.6.16"
   resolved "https://registry.yarnpkg.com/@toreda/log/-/log-0.6.16.tgz#bdca453a08242b655804035d27cf788bcd9b91e1"

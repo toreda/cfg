@@ -24,10 +24,19 @@
  */
 
 import {type CfgInit} from './cfg/init';
+import {Log} from '@toreda/log';
+import {StorageAdapter} from './storage/adapter';
 
 /**
  * @category Core
  */
 export class Cfg {
-	constructor(init: CfgInit) {}
+	// Global logger instance.
+	public readonly base: Log;
+	public  adapter: StorageAdapter | null;
+
+	constructor(init: Partial<CfgInit>) {
+		this.base = init?.log ? init.log : new Log();
+		this.adapter = null;
+	}
 }

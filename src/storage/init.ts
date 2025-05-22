@@ -26,8 +26,10 @@
 import {Log} from '@toreda/log';
 
 /**
+ * Parameters used to create a new storage instance.
+ *
  * @category Storage
  */
 export interface StorageInit {
-	log?: Log;
+	log: Log;
 }

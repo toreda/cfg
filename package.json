@@ -24,6 +24,7 @@
 		"@toreda/build-tools": "^0.8.0",
 		"@toreda/eslint-config": "^2.2.0",
 		"@toreda/fate": "^0.7.0",
+		"@toreda/lifecycle": "^2.2.1",
 		"@toreda/prettier-config": "^1.0.1",
 		"@toreda/types": "^2.16.0",
 		"@types/eslint": "^9.6.1",

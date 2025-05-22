@@ -23,7 +23,14 @@
  *
  */
 
+import {StorageAdapter} from '../storage/adapter';
+
 /**
  * @category Core
  */
-export interface CfgData {}
+export interface CfgData {
+	// Globally unique ID of built-in storage adapter to use.
+	storageAdapterId?: string;
+	// Custom storage adapter to use.
+	storageAdapter?: StorageAdapter;
+}

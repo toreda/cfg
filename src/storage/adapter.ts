@@ -23,8 +23,12 @@
  *
  */
 
-import {Fate} from '@toreda/fate';
 /**
+ * Base class for all custom storage adapters.
+ *
  * @category Storage
  */
-export abstract class StorageAdapter {}
+export abstract class StorageAdapter<ValueT = unknown> {
+	public abstract get: (key: string) => Promise<ValueT | null>;
+	public abstract set: (key: string) => Promise<ValueT | null>;
+}
