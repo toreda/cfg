@@ -23,7 +23,11 @@
  *
  */
 
+import {type StorageAdapterData} from './data';
+
 /**
  * @category Storage
  */
-export interface StorageAdapterInit {}
+export interface StorageAdapterInit {
+	data: StorageAdapterData;
+}

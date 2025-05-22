@@ -23,16 +23,33 @@
  *
  */
 
-import {Entry} from '../entry';
-import {StorageAdapter} from '../storage/adapter';
+import {Fate} from '@toreda/fate';
+import {Entry} from '../../entry';
+import {StorageAdapter} from '../../storage/adapter';
 
 /**
- * @category Core
+ * @category Storage Adapters
  */
-export interface CfgData<ValueT = unknown> {
+export class LocalStorageAdapter extends StorageAdapter<unknown, Entry<unknown>> {
+	constructor() {
+		super({
+			data: {
+				'id': 'local-storage'
+			}
+		});
+	}
 
-	// The first adapter found is default when no default adapter ID is set.
-	defaultAdapterId?: string;
-	// Custom storage adapter to use.
-	adapters?: StorageAdapter<ValueT, Entry<ValueT>>[];
+	public async available(): Promise<boolean> {
+		return false;
+	}
+
+	public async get(key: string): Promise<Fate<unknown>> {
+		const fate = new Fate<unknown>();
+		return fate;
+	}
+
+	public async set(key: string, value: unknown): Promise<Fate<unknown>> {
+		const fate = new Fate<unknown>();
+		return fate;
+	}
 }

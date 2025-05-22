@@ -23,12 +23,27 @@
  *
  */
 
+import {Entry} from '../entry';
+import {Fate} from '@toreda/fate';
+import {type StorageAdapterInit} from './adapter/init';
+
 /**
  * Base class for all custom storage adapters.
  *
  * @category Storage
  */
-export abstract class StorageAdapter<ValueT = unknown> {
-	public abstract get: (key: string) => Promise<ValueT | null>;
-	public abstract set: (key: string) => Promise<ValueT | null>;
+export abstract class StorageAdapter<ValueT, EntryT extends Entry<ValueT>> {
+	private readonly map: Map<string, EntryT>;
+
+	constructor(init: StorageAdapterInit) {
+		this.map = new Map<string, EntryT>();
+	}
+
+	public abstract available(): Promise<boolean>;
+	public abstract get(key: string): Promise<Fate<ValueT | null>>;
+	public abstract set(key: string, value?: ValueT | null): Promise<Fate<ValueT | null>>;
+
+	public reset(): void {
+		this.map.clear();
+	}
 }

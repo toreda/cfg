@@ -23,16 +23,11 @@
  *
  */
 
-import {Entry} from '../entry';
-import {StorageAdapter} from '../storage/adapter';
-
 /**
- * @category Core
+ * Base class for all custom storage adapters.
+ *
+ * @category Stored Entries
  */
-export interface CfgData<ValueT = unknown> {
-
-	// The first adapter found is default when no default adapter ID is set.
-	defaultAdapterId?: string;
-	// Custom storage adapter to use.
-	adapters?: StorageAdapter<ValueT, Entry<ValueT>>[];
+export interface EntryData<ValueT = unknown> {
+	value: ValueT;
 }

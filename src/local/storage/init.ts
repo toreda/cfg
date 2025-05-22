@@ -23,16 +23,7 @@
  *
  */
 
-import {Entry} from '../entry';
-import {StorageAdapter} from '../storage/adapter';
-
 /**
- * @category Core
+ * @category Storage Adapters
  */
-export interface CfgData<ValueT = unknown> {
-
-	// The first adapter found is default when no default adapter ID is set.
-	defaultAdapterId?: string;
-	// Custom storage adapter to use.
-	adapters?: StorageAdapter<ValueT, Entry<ValueT>>[];
-}
+export interface LocalStorageInit {}

@@ -1,63 +1,39 @@
-/**
- *	MIT License
- *
- *	Copyright (c) 2019 - 2025 Toreda, Inc.
- *
- *	Permission is hereby granted, free of charge, to any person obtaining a copy
- *	of this software and associated documentation files (the "Software"), to deal
- *	in the Software without restriction, including without limitation the rights
- *	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- *	copies of the Software, and to permit persons to whom the Software is
- *	furnished to do so, subject to the following conditions:
+import {Levels, Log} from '@toreda/log';
+import {series, src} from 'gulp';
 
- * 	The above copyright notice and this permission notice shall be included in all
- * 	copies or substantial portions of the Software.
- *
- * 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- *	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- *	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * 	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- *	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- *	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * 	SOFTWARE.
- *
- */
+import {Build} from '@toreda/build-tools';
+import {EventEmitter} from 'events';
 
-import gulp, {dest, series, src} from 'gulp';
-
-import {ESLint} from 'eslint';
-import del from 'del';
-import ts from 'gulp-typescript';
-
-const eslint = new ESLint({
-
+const events = new EventEmitter();
+const build = new Build({
+	events: events,
+	log: new Log({
+		globalLevel: Levels.ALL,
+		consoleEnabled: true
+	})
 });
 
-const srcPatterns = ['src/*.ts', 'src/**/*.ts'];
+async function runLint(): Promise<NodeJS.ReadWriteStream> {
+	await build.linter.execute({
+		formatterId: 'stylish',
+		srcPatterns: ['./src/**.ts', './src/**/**.ts']
+	});
 
-const tsc = ts.createProject('tsconfig.json');
-
-async function linter() {
-	const result = await eslint.lintFiles(srcPatterns);
-	const formatter = await eslint.loadFormatter('stylish');
-
-	const output = formatter.format(result);
-	console.log(output);
+	return src(['*'], {
+		read: false
+	});
 }
 
-function createDist() {
-	// Hack to create folder structures without actually reading files.
-	// Nested folders need to be created in their nested order.
-	return gulp.src('*.*', {read: false}).pipe(gulp.dest('./dist'));
+function createDist(): Promise<NodeJS.ReadWriteStream> {
+	return build.gulpSteps.createDir('./dist', true);
 }
 
-function cleanDist() {
-	return del(`dist/**`, {force: true});
+function cleanDist(): Promise<NodeJS.ReadWriteStream> {
+	return build.gulpSteps.cleanDir('./dist', true);
 }
 
 function buildSrc() {
-	// Build typescript sources and output them in './dist'.
-	return src(srcPatterns).pipe(tsc()).pipe(dest('dist'));
+	return build.run.typescript('./dist', 'tsconfig.json');
 }
 
-exports.default = series(createDist, cleanDist, linter, buildSrc);
+exports.default = series(createDist, cleanDist, runLint, buildSrc);

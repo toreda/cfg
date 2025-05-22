@@ -26,6 +26,8 @@
 import {type CfgInit} from './cfg/init';
 import {Log} from '@toreda/log';
 import {StorageAdapter} from './storage/adapter';
+import {Entry} from './entry';
+import {type StorageAdapterId} from './storage/adapter/id';
 
 /**
  * @category Core
@@ -33,10 +35,16 @@ import {StorageAdapter} from './storage/adapter';
 export class Cfg {
 	// Global logger instance.
 	public readonly base: Log;
-	public  adapter: StorageAdapter | null;
+	public readonly adapters: Map<StorageAdapterId, StorageAdapter<unknown, Entry<unknown>>>;
 
 	constructor(init: Partial<CfgInit>) {
 		this.base = init?.log ? init.log : new Log();
-		this.adapter = null;
+
+		this.adapters = new Map<StorageAdapterId, StorageAdapter<unknown, Entry<unknown>>>;
 	}
+
+	public reset(): void {
+		this.adapters.clear();
+	}
+
 }

@@ -1,39 +1,34 @@
 {
-	"exclude": ["**/node_modules", "dist/**"],
-	"include": ["**/src/**/*", "**/tests/**/*.ts"],
-	"filesGlob": ["./src/*.ts", "./src/**/*.ts", "!./node_modules/**"],
+	"exclude": ["node_modules", "dist"],
+	"include": ["./src/**/*.ts"],
+	"filesGlob": ["./src/**/*.ts", "!./node_modules/**"],
+	"rootDir": ".",
 	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
 		"allowUnreachableCode": false,
 		"alwaysStrict": true,
+		"baseUrl": ".",
 		"declaration": true,
 		"esModuleInterop": true,
 		"isolatedModules": false,
-		"lib": ["es6", "ES2015", "ESNext"],
-		"module": "CommonJS",
+		"lib": ["es6", "dom"],
+		"module": "commonjs",
 		"moduleResolution": "node",
 		"noImplicitUseStrict": false,
 		"outDir": "./dist",
 		"preserveConstEnums": true,
-		"removeComments": false,
-		"incremental": true,
-		"resolveJsonModule": true,
-		"rootDir": ".",
+		"removeComments": true,
 		"sourceMap": true,
-		"strict": true,
 		"strictBindCallApply": true,
 		"strictNullChecks": true,
 		"strictPropertyInitialization": true,
-		"target": "ESNext",
+		"target": "es2015",
 		"traceResolution": false
 	},
 	"ts-node": {
 		"swc": true,
 		"compilerOptions": {
-			"allowSyntheticDefaultImports": true,
-			"noLib": true,
 			"noEmit": true,
-			"sourceMap": false
+			"noLib": true
 		}
 	}
 }
